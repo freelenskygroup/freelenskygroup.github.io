@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="rangeslider.css">
+</head>
+<body>
+<br>
+<br>
+<span id="js-persent"></span>
+<br>
+<br>
+<input type="range"  min="1" max="1000" step="2" value="10" id="js-ran" data-persent="10">
+<br>
+<br>
+<span id="js-input"></span>
+
+<script src="jquery.min.js"></script>
+<script src="rangeslider.min.js"></script>
+<script>
+	
+  $(function(){
+     
+    var ran =  $("#js-ran");
+    var inp = $("#js-input");
+    var per = $("#js-persent");
+
+    ran.rangeslider({
+    	polyfill: false,
+    	onInit: function() {
+    		inp.text(ran.val());
+    	},
+    	onSlide: function(position, value) {
+    		inp.text(value);
+    		per.text(value/(+ran.attr('max'))*100+"%");
+    	},
+    });
+
+  })
+
+</script>
+	
+</body>
+</html>
